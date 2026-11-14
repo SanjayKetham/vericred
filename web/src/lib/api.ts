@@ -55,9 +55,20 @@ export class ApiError extends Error {
   }
 }
 
+/**
+ * Where the API lives.
+ *
+ * In development this is empty and requests go to `/api/...`, which Vite proxies to localhost:4000.
+ * In a split deployment — the UI on a static host, the API elsewhere — `VITE_API_URL` points at the
+ * API's origin and is baked in at build time. A trailing slash is trimmed so paths join cleanly.
+ */
+const API_BASE = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '');
+
+export const apiUrl = (path: string): string => `${API_BASE}${path}`;
+
 export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   const token = getToken();
-  const response = await fetch(path, {
+  const response = await fetch(apiUrl(path), {
     ...init,
     headers: {
       'content-type': 'application/json',

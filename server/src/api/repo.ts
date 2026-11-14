@@ -129,6 +129,7 @@ export class FileRepo implements Repo {
   private readonly revocationIndex = new Map<string, Revocation[]>();
   private readonly verificationIndex = new Map<string, VerificationRequest[]>();
   private readonly credentialsNewestFirst: Credential[];
+  private readonly verificationIds = new Set<string>();
   /** Accounts registered at runtime join the demo set; the Prisma driver persists them instead. */
   private readonly users: AppUser[] = DEMO_USERS.map((u) => ({ ...u }));
 
@@ -151,6 +152,7 @@ export class FileRepo implements Repo {
       this.revocationIndex.set(r.credential_id, list);
     }
     for (const v of this.data.verificationRequests) {
+      this.verificationIds.add(v.verification_id);
       if (!v.credential_id) continue;
       const list = this.verificationIndex.get(v.credential_id) ?? [];
       list.push(v);
@@ -264,6 +266,12 @@ export class FileRepo implements Repo {
   }
 
   async insertVerification(row: VerificationRequest) {
+    // Mirror the database's unique index: a store that quietly accepts a duplicate hides the bug
+    // rather than surfacing it, and the two drivers must answer the same contract.
+    if (this.verificationIds.has(row.verification_id)) {
+      throw Object.assign(new Error(`verification_id ${row.verification_id} already exists`), { code: 'DUPLICATE' });
+    }
+    this.verificationIds.add(row.verification_id);
     this.data.verificationRequests.push(row);
     if (row.credential_id) {
       const list = this.verificationIndex.get(row.credential_id) ?? [];
@@ -526,7 +534,9 @@ function describeError(error: unknown): string {
   return telling ?? lines.find((line) => !/^invalid `/i.test(line)) ?? lines[0] ?? 'no further detail';
 }
 
-export async function createRepo(dataDir = join(process.cwd(), '..', 'data')): Promise<Repo> {
+export async function createRepo(
+  dataDir = process.env.DATA_DIR ?? join(process.cwd(), '..', 'data'),
+): Promise<Repo> {
   if (process.env.DATA_SOURCE !== 'file' && process.env.DATABASE_URL) {
     try {
       const { PrismaRepo } = await import('./prismaRepo.js');

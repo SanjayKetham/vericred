@@ -43,7 +43,38 @@ import { createRepo, type Repo } from './repo.js';
  */
 
 const app = express();
-app.use(cors());
+
+/**
+ * CORS.
+ *
+ * Verification is meant to be callable from anywhere, so the default is open — that is the product,
+ * not an oversight. Set `CORS_ORIGIN` (comma-separated) in a deployment to narrow it to the UI's
+ * origin; the open default then applies only when nothing is configured.
+ */
+const allowedOrigins = (process.env.CORS_ORIGIN ?? '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter((origin) => origin.length > 0);
+
+app.use(
+  cors(
+    allowedOrigins.length === 0
+      ? undefined
+      : {
+          origin(origin, callback) {
+            // A request with no Origin header is a server-to-server or curl call, not a browser
+            // cross-origin request, so there is nothing for CORS to protect against.
+            if (!origin || allowedOrigins.includes(origin)) return callback(null, true);
+            return callback(new Error(`origin ${origin} is not allowed`));
+          },
+          credentials: false,
+        },
+  ),
+);
+
+// Behind Render's proxy the client IP arrives in X-Forwarded-For; without this the rate limiters
+// would see a single upstream address and throttle every visitor together.
+if (process.env.TRUST_PROXY === 'true') app.set('trust proxy', 1);
 app.use(express.json({ limit: '1mb' }));
 app.use(authenticate);
 
@@ -459,7 +490,7 @@ app.post(
 
     const latency = Math.max(1, Date.now() - startedAt);
     const record: VerificationRequest = {
-      verification_id: makeVerificationId(requestedAt.getUTCFullYear(), Math.floor(requestedAt.getTime() / 1000) % 1_000_000),
+      verification_id: '', // assigned below, retrying until the store accepts it
       credential_id: credential?.credential_id ?? null,
       requested_credential_ref: input.reference,
       verifier_name: input.verifier_name,
@@ -471,7 +502,7 @@ app.post(
       result: outcome.result,
       latency_ms: latency,
     };
-    await repo.insertVerification(record);
+    record.verification_id = await storeVerification(record, requestedAt.getUTCFullYear());
     await audit({
       entity_type: 'VERIFICATION',
       entity_id: record.verification_id,
@@ -511,6 +542,38 @@ app.post(
     });
   }),
 );
+
+/**
+ * Assigns a verification id and stores the request, retrying on collision.
+ *
+ * Ids are only six digits wide, so deriving one from the clock means two requests in the same second
+ * collide — which PostgreSQL rejects on the unique index and the in-memory store used to accept
+ * silently. Runtime ids are drawn from a high band so they cannot clash with the generated dataset's
+ * sequential ids, and a conflict simply draws again.
+ */
+const RUNTIME_ID_FLOOR = 900_000;
+const RUNTIME_ID_SPAN = 100_000;
+
+async function storeVerification(record: VerificationRequest, year: number): Promise<string> {
+  for (let attempt = 0; attempt < 10; attempt++) {
+    const candidate = makeVerificationId(year, RUNTIME_ID_FLOOR + Math.floor(Math.random() * RUNTIME_ID_SPAN));
+    try {
+      await repo.insertVerification({ ...record, verification_id: candidate });
+      return candidate;
+    } catch (error) {
+      if (!isUniqueViolation(error)) throw error;
+    }
+  }
+  throw new Error('could not allocate a unique verification id after 10 attempts');
+}
+
+/** True for a duplicate-key rejection from either driver. */
+function isUniqueViolation(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  if ((error as { code?: string }).code === 'DUPLICATE') return true;
+  if ((error as { code?: string }).code === 'P2002') return true;
+  return /unique constraint/i.test(error.message);
+}
 
 /* ------------------------------------------------------------ revocation */
 
@@ -754,6 +817,11 @@ app.get(
   }),
 );
 
+/** Where the generated dataset lives. `DATA_DIR` overrides it for deployments with a different layout. */
+function dataDir(): string {
+  return process.env.DATA_DIR ?? join(process.cwd(), '..', 'data');
+}
+
 /* ---------------------------------------------- data quality / validation */
 
 /**
@@ -765,7 +833,7 @@ app.get(
   '/api/platform/validation',
   requireRole('PLATFORM_ADMIN', 'ADMIN'),
   asyncRoute(async (_req, res) => {
-    const file = join(process.cwd(), '..', 'data', 'validation-summary.json');
+    const file = join(dataDir(), 'validation-summary.json');
     if (!existsSync(file)) {
       return res.status(404).json({
         error: 'no_validation_report',
@@ -849,8 +917,9 @@ const PORT = Number(process.env.PORT ?? 4000);
 createRepo()
   .then((instance) => {
     repo = instance;
-    app.listen(PORT, () => {
-      console.log(`\n  VeriCred API listening on http://localhost:${PORT}`);
+    // Bind every interface: a container platform routes to the service from outside the loopback.
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`\n  VeriCred API listening on port ${PORT}`);
       console.log(`  AI: ${aiAvailable() ? 'OpenAI structured outputs' : 'deterministic fallback (no OPENAI_API_KEY)'}\n`);
     });
   })

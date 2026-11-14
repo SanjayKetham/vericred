@@ -23,7 +23,8 @@ export function parseArgs(argv: string[]): Args {
     return i >= 0 ? argv[i + 1] : undefined;
   };
   const seed = Number(get('--seed') ?? DEFAULT_SEED);
-  const scale = Number(get('--scale') ?? 1);
+  // SEED_SCALE lets a deployment shrink the dataset without a shell-specific default in the command.
+  const scale = Number(get('--scale') ?? process.env.SEED_SCALE ?? 1);
   if (!Number.isFinite(seed)) throw new Error('--seed must be a number');
   if (!Number.isFinite(scale) || scale <= 0) throw new Error('--scale must be a positive number');
   return {

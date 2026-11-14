@@ -1,6 +1,6 @@
 # Validation summary (Step 8)
 
-Generated 2026-11-14T11:26:23.530Z from `C:\CandidateWorkspace\Hackathon\data`. Re-create with `npm run validate`.
+Generated 2026-11-14T11:38:29.079Z from `c:\CandidateWorkspace\Hackathon\data`. Re-create with `npm run validate`.
 
 **18/18 checks pass. 0 unexpected violations.**
 
