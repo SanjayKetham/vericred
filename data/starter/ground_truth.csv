@@ -1,0 +1,7 @@
+record_type,record_id,issue_type,expected_decision,detectable_by,description
+Credential,CRD-2025-000204,EC01_ISSUED_BEFORE_COMPLETION,REJECT_ISSUANCE,issued_at < completion.completed_at,Credential issued 14 day(s) before the completion it cites.
+Credential,CRD-2026-000364,EC02_DUPLICATE_CREDENTIAL_ID,REJECT_DUPLICATE,primary-key uniqueness on credential_id,credential_id CRD-2026-000364 appears on more than one row (second row carries completion CMP-LRN-000733-CRS-000002).
+VerificationRequest,VER-2026-000124,EC02_DUPLICATE_CREDENTIAL_ID,AMBIGUOUS_REFERENCE,credential_id resolves to more than one credential row,"Request cites CRD-2026-000364, which is carried by more than one credential row; the result is not well defined."
+VerificationRequest,VER-2026-000117,EC03_REVOKED_VERIFIES_ACTIVE,INVALID_REVOKED,replay revocations as of requested_at and compare to the recorded result,Credential CRD-2026-000286 had an active revocation at 2026-06-20T06:25:06.000Z but the request recorded VALID.
+Credential,CRD-2026-000381,EC04_ALTERED_PAYLOAD_HASH_UNDETECTED,INVALID_HASH_MISMATCH,sha256(canonical(payload_json)) != payload_hash,Payload overall_score inflated to 84 after sealing; payload_hash and signature left stale.
+VerificationRequest,VER-2026-000251,EC04_ALTERED_PAYLOAD_HASH_UNDETECTED,INVALID_HASH_MISMATCH,recompute payload hash at verification time,Verification of tampered credential CRD-2026-000381 returned VALID; the altered payload was not detected.

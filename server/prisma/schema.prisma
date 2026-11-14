@@ -1,0 +1,275 @@
+// VeriCred — PostgreSQL schema.
+//
+// Mirrors docs/data-dictionary.md. Every relationship is a declared foreign key and the lifecycle
+// columns are database enums, so the constraints the validator checks in the files are also enforced
+// by the database itself. The deliberately duplicated credential_id (edge case EC-02) is therefore
+// *rejected* at seed time rather than silently stored — that rejection is the evidence the constraint
+// works, and the seeder reports it.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum LearnerStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+}
+
+enum CourseStatus {
+  ACTIVE
+  RETIRED
+}
+
+enum IssuerStatus {
+  ACTIVE
+  SUPERSEDED
+}
+
+enum RuleStatus {
+  ACTIVE
+  SUPERSEDED
+}
+
+enum CompletionStatus {
+  IN_PROGRESS
+  COMPLETED
+  WITHDRAWN
+  FAILED
+}
+
+enum CredentialStatus {
+  ACTIVE
+  REVOKED
+  EXPIRED
+}
+
+enum RevocationStatus {
+  ACTIVE
+  RESCINDED
+}
+
+enum VerificationResult {
+  VALID
+  INVALID_NOT_FOUND
+  INVALID_REVOKED
+  INVALID_EXPIRED
+  INVALID_HASH_MISMATCH
+  INVALID_IDENTITY_MISMATCH
+}
+
+enum UserRole {
+  LEARNER
+  INSTRUCTOR
+  ADMIN
+  SUPPORT
+  PLATFORM_ADMIN
+  VERIFIER
+}
+
+model Learner {
+  learner_id       String        @id
+  first_name       String
+  last_name        String
+  full_name        String
+  email            String        @unique
+  date_of_birth    String
+  national_id_hash String        @unique
+  country          String
+  enrollment_date  DateTime
+  status           LearnerStatus
+  created_at       DateTime
+
+  completions CompletionRecord[]
+  credentials Credential[]
+
+  // full_name is indexed but never unique: duplicates are expected and identity must not rest on it.
+  @@index([full_name])
+  @@index([country])
+}
+
+model Course {
+  course_id        String       @id
+  course_code      String       @unique
+  title            String
+  subject_area     String
+  level            String
+  credit_hours     Int
+  modules_total    Int
+  assessment_count Int
+  passing_score    Int
+  effective_from   DateTime
+  effective_to     DateTime?
+  status           CourseStatus
+
+  rules       CredentialRule[]
+  completions CompletionRecord[]
+  credentials Credential[]
+
+  @@index([subject_area, level])
+}
+
+model Issuer {
+  issuer_id            String       @id
+  legal_name           String
+  accreditation_body   String
+  key_algorithm        String
+  public_key           String       @unique
+  effective_from       DateTime
+  effective_to         DateTime?
+  supersedes_issuer_id String?
+  status               IssuerStatus
+
+  // Self-relation: a successor issuer points at the issuer it replaced (issuer change history).
+  supersedes  Issuer?      @relation("IssuerSuccession", fields: [supersedes_issuer_id], references: [issuer_id])
+  supersededBy Issuer[]    @relation("IssuerSuccession")
+  credentials Credential[]
+}
+
+model CredentialRule {
+  rule_id                   String     @id
+  course_id                 String
+  rule_version              Int
+  min_overall_score         Int
+  min_modules_completed_pct Int
+  required_assessments_passed Int
+  min_attendance_pct        Int
+  max_days_to_complete      Int
+  effective_from            DateTime
+  effective_to              DateTime?
+  status                    RuleStatus
+
+  course      Course       @relation(fields: [course_id], references: [course_id])
+  credentials Credential[]
+
+  @@unique([course_id, rule_version])
+  @@index([course_id, status])
+}
+
+model CompletionRecord {
+  completion_id         String           @id
+  learner_id            String
+  course_id             String
+  enrolled_at           DateTime
+  last_activity_at      DateTime
+  completed_at          DateTime?
+  modules_total         Int
+  modules_completed     Int
+  modules_completed_pct Int
+  attendance_pct        Int
+  assessments_taken     Int
+  assessments_passed    Int
+  overall_score         Int
+  days_to_complete      Int?
+  status                CompletionStatus
+
+  learner    Learner     @relation(fields: [learner_id], references: [learner_id])
+  course     Course      @relation(fields: [course_id], references: [course_id])
+  credential Credential?
+
+  @@unique([learner_id, course_id])
+  @@index([status])
+}
+
+model Credential {
+  credential_id       String           @id
+  learner_id          String
+  course_id           String
+  completion_id       String           @unique
+  issuer_id           String
+  rule_id             String
+  rule_version        Int
+  issued_at           DateTime
+  expires_at          DateTime?
+  status              CredentialStatus
+  payload_json        String
+  payload_hash        String
+  hash_algorithm      String
+  signature           String
+  signature_algorithm String
+  verification_code   String           @unique
+  issuance_decision   String
+
+  learner       Learner               @relation(fields: [learner_id], references: [learner_id])
+  course        Course                @relation(fields: [course_id], references: [course_id])
+  completion    CompletionRecord      @relation(fields: [completion_id], references: [completion_id])
+  issuer        Issuer                @relation(fields: [issuer_id], references: [issuer_id])
+  rule          CredentialRule        @relation(fields: [rule_id], references: [rule_id])
+  verifications VerificationRequest[]
+  revocations   Revocation[]
+
+  @@index([status])
+  @@index([learner_id])
+  @@index([issued_at])
+}
+
+model VerificationRequest {
+  verification_id          String             @id
+  credential_id            String?
+  requested_credential_ref String
+  verifier_name            String
+  verifier_type            String
+  requested_at             DateTime
+  presented_hash           String
+  identity_match_method    String
+  identity_match_score     Float
+  result                   VerificationResult
+  latency_ms               Int
+
+  // Optional: a request may cite a reference that resolves to nothing.
+  credential Credential? @relation(fields: [credential_id], references: [credential_id])
+
+  @@index([credential_id])
+  @@index([result])
+  @@index([requested_at])
+}
+
+model Revocation {
+  revocation_id String           @id
+  credential_id String
+  sequence_no   Int
+  reason_code   String
+  reason_text   String
+  revoked_at    DateTime
+  revoked_by    String
+  status        RevocationStatus
+
+  credential Credential @relation(fields: [credential_id], references: [credential_id])
+
+  @@unique([credential_id, sequence_no])
+  @@index([credential_id])
+}
+
+model AuditEvent {
+  event_id     String   @id
+  event_seq    Int      @unique
+  entity_type  String
+  entity_id    String
+  event_type   String
+  actor_id     String
+  actor_role   String
+  occurred_at  DateTime
+  payload_json String
+  prev_hash    String
+  event_hash   String
+
+  @@index([entity_type, entity_id])
+  @@index([occurred_at])
+}
+
+/// Application users for JWT + RBAC. Separate from Learner: a learner is a domain record, a user is a
+/// login. A LEARNER-role user is linked to exactly one learner record.
+model User {
+  user_id       String   @id
+  email         String   @unique
+  password_hash String
+  role          UserRole
+  display_name  String
+  learner_id    String?
+  created_at    DateTime @default(now())
+}

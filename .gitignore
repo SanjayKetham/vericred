@@ -1,0 +1,23 @@
+node_modules/
+dist/
+.env
+*.log
+*.tsbuildinfo
+.tmp/
+web/dist/
+
+# Reproducibility proof output — regenerate with `npm run reproduce`.
+data/run-a/
+data/run-b/
+
+# The full-scale dataset is ~156 MB and regenerates byte-identically in about 20 seconds
+# (`npm run generate`, fixed seed 20261022), so it is not worth carrying in the repository.
+# What stays committed is everything needed to understand and check a run:
+#   data/starter/                  a complete dataset at --scale 0.05
+#   data/ground_truth.csv/.json    the labelled edge cases
+#   data/manifest.json             per-file SHA-256 checksums and provenance
+#   data/validation-summary.json   the 18 checks and detection metrics
+#   data/reproducibility-report.json
+/data/csv/
+/data/json/
+/data/sql/

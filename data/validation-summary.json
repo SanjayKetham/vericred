@@ -1,0 +1,426 @@
+{
+  "dataset_dir": "C:\\CandidateWorkspace\\Hackathon\\data",
+  "validated_at": "2026-11-14T11:26:23.530Z",
+  "checks": [
+    {
+      "id": "PK-01",
+      "category": "primary-key uniqueness",
+      "description": "Every primary key appears exactly once",
+      "rows_checked": 123907,
+      "violations_total": 6,
+      "violations_expected_by_label": 6,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK-01",
+      "category": "foreign-key integrity",
+      "description": "Every foreign key resolves to an existing parent row",
+      "rows_checked": 146618,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "FK-02",
+      "category": "join validity",
+      "description": "Credential learner/course agree with the cited completion record",
+      "rows_checked": 10006,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID-01",
+      "category": "naming conventions",
+      "description": "All identifiers match their documented zero-padded pattern",
+      "rows_checked": 123907,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "EN-01",
+      "category": "enum domains",
+      "description": "Every enum column holds only documented values",
+      "rows_checked": 94744,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "DT-01",
+      "category": "date ordering",
+      "description": "Event dates follow their documented ordering",
+      "rows_checked": 60313,
+      "violations_total": 16,
+      "violations_expected_by_label": 16,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "AR-01",
+      "category": "arithmetic reconciliation",
+      "description": "Derived numeric columns recompute from their sources",
+      "rows_checked": 44798,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "LC-01",
+      "category": "lifecycle transitions",
+      "description": "Entity states agree with a replay of their event history",
+      "rows_checked": 54804,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "UQ-01",
+      "category": "natural-key uniqueness",
+      "description": "Unique business keys (email, national_id_hash, course_code, public_key) do not collide",
+      "rows_checked": 41006,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "IS-01",
+      "category": "issuance rules enforced",
+      "description": "Every issued credential still passes its pinned rule version",
+      "rows_checked": 10006,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "HS-01",
+      "category": "payload integrity",
+      "description": "Stored payload hash recomputes from the stored payload",
+      "rows_checked": 10006,
+      "violations_total": 11,
+      "violations_expected_by_label": 11,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "SG-01",
+      "category": "issuer signatures",
+      "description": "Every credential signature verifies against its issuer public key",
+      "rows_checked": 10006,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "AU-01",
+      "category": "audit chain integrity",
+      "description": "Hash chain replays from genesis without a break",
+      "rows_checked": 40895,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "AU-02",
+      "category": "audit sequence",
+      "description": "event_seq is monotonic with no gaps",
+      "rows_checked": 40895,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "AU-03",
+      "category": "audit timing",
+      "description": "No audit event is dated after the dataset as-of instant",
+      "rows_checked": 40895,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "VR-01",
+      "category": "verification reproducibility",
+      "description": "Re-running verification reproduces the recorded result",
+      "rows_checked": 5011,
+      "violations_total": 35,
+      "violations_expected_by_label": 35,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "ID-02",
+      "category": "identity matching",
+      "description": "A VALID result never rests on name-only or sub-threshold identity matching",
+      "rows_checked": 5011,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    },
+    {
+      "id": "CN-01",
+      "category": "canonical form stability",
+      "description": "Canonicalising a payload twice yields the same hash",
+      "rows_checked": 2000,
+      "violations_total": 0,
+      "violations_expected_by_label": 0,
+      "violations_unexpected": 0,
+      "status": "PASS",
+      "sample": []
+    }
+  ],
+  "totals": {
+    "checks_run": 18,
+    "checks_passed": 18,
+    "violations_unexpected": 0,
+    "violations_expected_by_label": 68
+  },
+  "anomaly_detection": {
+    "per_issue_type": [
+      {
+        "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+        "expected": 14,
+        "detected": 14,
+        "true_positives": 14,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      {
+        "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+        "expected": 8,
+        "detected": 8,
+        "true_positives": 8,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      {
+        "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+        "expected": 18,
+        "detected": 18,
+        "true_positives": 18,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      {
+        "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+        "expected": 26,
+        "detected": 26,
+        "true_positives": 26,
+        "false_positives": 0,
+        "false_negatives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      }
+    ],
+    "overall": {
+      "issue_type": "OVERALL",
+      "expected": 66,
+      "detected": 66,
+      "true_positives": 66,
+      "false_positives": 0,
+      "false_negatives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    "detections_sample": [
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2026-009301",
+        "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+        "evidence": "credential_id CRD-2026-009301 appears on more than one row"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2026-004809",
+        "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+        "evidence": "credential_id CRD-2026-004809 appears on more than one row"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2025-001924",
+        "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+        "evidence": "credential_id CRD-2025-001924 appears on more than one row"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2026-007509",
+        "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+        "evidence": "credential_id CRD-2026-007509 appears on more than one row"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2026-005288",
+        "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+        "evidence": "credential_id CRD-2026-005288 appears on more than one row"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2026-009602",
+        "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+        "evidence": "credential_id CRD-2026-009602 appears on more than one row"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2024-000537",
+        "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+        "evidence": "recomputed 056dfa5384e29b24… != stored 6e500adfd84ed623…"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2024-000683",
+        "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+        "evidence": "issued_at 2024-10-29T01:02:00.000Z precedes completed_at 2024-11-10T01:02:00.000Z"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2024-000794",
+        "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+        "evidence": "recomputed 06aa757d7645765f… != stored ed9fcc685fec2b29…"
+      },
+      {
+        "record_type": "Credential",
+        "record_id": "CRD-2025-001665",
+        "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+        "evidence": "issued_at 2025-05-17T07:14:49.000Z precedes completed_at 2025-05-25T07:14:49.000Z"
+      }
+    ]
+  },
+  "profile": {
+    "row_counts": {
+      "learners": 20000,
+      "courses": 1000,
+      "issuers": 6,
+      "credential_rules": 1481,
+      "completion_records": 44798,
+      "credentials": 10006,
+      "verification_requests": 5011,
+      "revocations": 710,
+      "audit_events": 40895,
+      "ground_truth": 66
+    },
+    "completion_status": {
+      "COMPLETED": 19942,
+      "WITHDRAWN": 11296,
+      "IN_PROGRESS": 8498,
+      "FAILED": 5062
+    },
+    "credential_status": {
+      "ACTIVE": 9398,
+      "REVOKED": 590,
+      "EXPIRED": 18
+    },
+    "verification_result": {
+      "VALID": 4302,
+      "INVALID_HASH_MISMATCH": 236,
+      "INVALID_NOT_FOUND": 212,
+      "INVALID_IDENTITY_MISMATCH": 191,
+      "INVALID_REVOKED": 70
+    },
+    "identity_match_method": {
+      "CREDENTIAL_ID": 2315,
+      "VERIFICATION_CODE": 1530,
+      "NATIONAL_ID_HASH": 623,
+      "EMAIL": 387,
+      "NAME_ONLY": 156
+    },
+    "verifier_type": {
+      "EMPLOYER": 2637,
+      "UNIVERSITY": 896,
+      "PLATFORM": 645,
+      "GOVERNMENT": 606,
+      "INDIVIDUAL": 227
+    },
+    "revocation_reason": {
+      "ADMIN_ERROR": 185,
+      "DATA_CORRECTION": 156,
+      "FRAUD": 117,
+      "COURSE_RETIRED": 98,
+      "ISSUER_CHANGE": 88,
+      "LEARNER_REQUEST": 66
+    },
+    "course_level": {
+      "INTERMEDIATE": 352,
+      "FOUNDATION": 335,
+      "ADVANCED": 227,
+      "EXPERT": 86
+    },
+    "learner_country": {
+      "IN": 5571,
+      "US": 4097,
+      "GB": 1928,
+      "DE": 1562,
+      "CA": 1374,
+      "AU": 1231,
+      "SG": 1227,
+      "BR": 1184,
+      "NG": 1021,
+      "JP": 805
+    },
+    "issuer_usage": {
+      "ISS-0001": 2510,
+      "ISS-0004": 2493,
+      "ISS-0005": 2389,
+      "ISS-0006": 2178,
+      "ISS-0003": 313,
+      "ISS-0002": 123
+    },
+    "identity_coverage": {
+      "distinct_full_names": 1600,
+      "names_shared_by_more_than_one_learner": 1600,
+      "learners_sharing_a_name": 20000,
+      "note": "Name collisions are deliberate: identity resolution must use learner_id, verification_code or national_id_hash."
+    },
+    "overall_score_distribution": {
+      "p10": 57,
+      "p25": 69,
+      "median": 73,
+      "p75": 77,
+      "p90": 80
+    },
+    "incomplete_courses": 24856,
+    "issuer_changes": 2
+  }
+}

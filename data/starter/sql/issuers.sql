@@ -1,0 +1,9 @@
+-- Issuer: 6 rows
+
+INSERT INTO "Issuer" ("issuer_id","legal_name","accreditation_body","key_algorithm","public_key","effective_from","effective_to","supersedes_issuer_id","status") VALUES
+  ('ISS-0001','Meridian Institute of Technology','ABET','Ed25519','cb4d8bd334e39cfa69129a8013f4c69ecaa66d768607942ffd796e56ffbde744','2021-06-01T00:00:00.000Z',NULL,NULL,'ACTIVE'),
+  ('ISS-0002','Northgate Professional Academy','CHEA','Ed25519','7f8c37f2839a3a3d2d78b79f9b2bc67808e6c4c23011925e486eaf0f3a749e4c','2021-06-01T00:00:00.000Z','2024-09-30T00:00:00.000Z',NULL,'SUPERSEDED'),
+  ('ISS-0003','Cascadia Open Learning Trust','EQAR','Ed25519','5fbf546cb0f156d3369924a0db54b3c446d1d89597f379f227dd13562c685e8c','2021-06-01T00:00:00.000Z','2025-03-31T00:00:00.000Z',NULL,'SUPERSEDED'),
+  ('ISS-0004','Vantage Skills Council','NONE','Ed25519','a7512fd4e597a5200138f6cf295835ad04bec9d4abad166e7102a401e36fd3e0','2022-01-15T00:00:00.000Z',NULL,NULL,'ACTIVE'),
+  ('ISS-0005','Hanover Technical University','CHEA','Ed25519','29b957a8a8366b5192dc894887a24fa90ca584fb66deadb5b8ee3709dc8584a4','2024-09-30T00:00:00.000Z',NULL,'ISS-0002','ACTIVE'),
+  ('ISS-0006','Lumen Credentialing Authority','NONE','Ed25519','f8c02997a2b5a9e9c9656ca4aac487159affee5c72d06d46d1d70fad43f9bb0e','2025-03-31T00:00:00.000Z',NULL,'ISS-0003','ACTIVE');

@@ -1,0 +1,50 @@
+[
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-000204",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 14 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-000364",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "REJECT_DUPLICATE",
+    "detectable_by": "primary-key uniqueness on credential_id",
+    "description": "credential_id CRD-2026-000364 appears on more than one row (second row carries completion CMP-LRN-000733-CRS-000002)."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000124",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "AMBIGUOUS_REFERENCE",
+    "detectable_by": "credential_id resolves to more than one credential row",
+    "description": "Request cites CRD-2026-000364, which is carried by more than one credential row; the result is not well defined."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000117",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-000286 had an active revocation at 2026-06-20T06:25:06.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-000381",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 84 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000251",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-000381 returned VALID; the altered payload was not detected."
+  }
+]

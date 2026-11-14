@@ -1,0 +1,530 @@
+[
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2024-000683",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 12 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-001665",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 8 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-001970",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 5 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-002752",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 18 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-003027",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 18 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-003063",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 19 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-003632",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 10 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-003699",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 15 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-003802",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 19 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-004739",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 8 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-007368",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 3 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-007429",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 2 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-008838",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 9 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-009988",
+    "issue_type": "EC01_ISSUED_BEFORE_COMPLETION",
+    "expected_decision": "REJECT_ISSUANCE",
+    "detectable_by": "issued_at < completion.completed_at",
+    "description": "Credential issued 3 day(s) before the completion it cites."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-001924",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "REJECT_DUPLICATE",
+    "detectable_by": "primary-key uniqueness on credential_id",
+    "description": "credential_id CRD-2025-001924 appears on more than one row (second row carries completion CMP-LRN-014394-CRS-000296)."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-004809",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "REJECT_DUPLICATE",
+    "detectable_by": "primary-key uniqueness on credential_id",
+    "description": "credential_id CRD-2026-004809 appears on more than one row (second row carries completion CMP-LRN-014382-CRS-000260)."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-005288",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "REJECT_DUPLICATE",
+    "detectable_by": "primary-key uniqueness on credential_id",
+    "description": "credential_id CRD-2026-005288 appears on more than one row (second row carries completion CMP-LRN-012328-CRS-000772)."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-007509",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "REJECT_DUPLICATE",
+    "detectable_by": "primary-key uniqueness on credential_id",
+    "description": "credential_id CRD-2026-007509 appears on more than one row (second row carries completion CMP-LRN-009057-CRS-000408)."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-009301",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "REJECT_DUPLICATE",
+    "detectable_by": "primary-key uniqueness on credential_id",
+    "description": "credential_id CRD-2026-009301 appears on more than one row (second row carries completion CMP-LRN-003106-CRS-000767)."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-009602",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "REJECT_DUPLICATE",
+    "detectable_by": "primary-key uniqueness on credential_id",
+    "description": "credential_id CRD-2026-009602 appears on more than one row (second row carries completion CMP-LRN-010189-CRS-000578)."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-003349",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "AMBIGUOUS_REFERENCE",
+    "detectable_by": "credential_id resolves to more than one credential row",
+    "description": "Request cites CRD-2026-004809, which is carried by more than one credential row; the result is not well defined."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-004729",
+    "issue_type": "EC02_DUPLICATE_CREDENTIAL_ID",
+    "expected_decision": "AMBIGUOUS_REFERENCE",
+    "detectable_by": "credential_id resolves to more than one credential row",
+    "description": "Request cites CRD-2026-004809, which is carried by more than one credential row; the result is not well defined."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000005",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-004356 had an active revocation at 2026-04-03T22:48:02.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000009",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-007672 had an active revocation at 2026-10-12T15:16:08.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000442",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-002184 had an active revocation at 2025-09-29T18:00:53.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000653",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-002345 had an active revocation at 2026-09-16T06:51:58.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-001248",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-002444 had an active revocation at 2026-07-08T07:19:48.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-001362",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-005810 had an active revocation at 2026-06-22T15:33:11.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-001577",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-004881 had an active revocation at 2026-05-24T21:20:12.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-001883",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-001039 had an active revocation at 2026-10-20T13:45:06.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-001898",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2024-000215 had an active revocation at 2025-06-20T19:29:20.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-001950",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-001664 had an active revocation at 2025-11-04T05:16:58.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-002403",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-008502 had an active revocation at 2026-10-16T20:51:13.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-002592",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2024-000385 had an active revocation at 2026-02-19T11:24:07.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-003204",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-003675 had an active revocation at 2026-03-18T15:29:55.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-003434",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-005799 had an active revocation at 2026-08-04T02:03:03.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-003823",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-001874 had an active revocation at 2026-09-16T02:59:24.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-004206",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2026-007518 had an active revocation at 2026-09-27T11:39:48.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-004326",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2024-000297 had an active revocation at 2025-11-13T11:54:53.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-004730",
+    "issue_type": "EC03_REVOKED_VERIFIES_ACTIVE",
+    "expected_decision": "INVALID_REVOKED",
+    "detectable_by": "replay revocations as of requested_at and compare to the recorded result",
+    "description": "Credential CRD-2025-001171 had an active revocation at 2026-09-27T14:44:50.000Z but the request recorded VALID."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2024-000537",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 82 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2024-000794",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 88 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-002024",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 89 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-002801",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 85 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2025-002819",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 85 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-004951",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 86 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-005841",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 89 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-006095",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 79 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-008607",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 78 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-008811",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 98 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "Credential",
+    "record_id": "CRD-2026-008929",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "sha256(canonical(payload_json)) != payload_hash",
+    "description": "Payload overall_score inflated to 88 after sealing; payload_hash and signature left stale."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-000195",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2025-002024 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-001002",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2025-002801 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-002071",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-008811 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-003130",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2024-000537 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005001",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-004951 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005002",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2025-002801 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005003",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2025-002024 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005004",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2024-000537 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005005",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-008811 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005006",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-005841 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005007",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-008607 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005008",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2025-002819 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005009",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2024-000794 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005010",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-008929 returned VALID; the altered payload was not detected."
+  },
+  {
+    "record_type": "VerificationRequest",
+    "record_id": "VER-2026-005011",
+    "issue_type": "EC04_ALTERED_PAYLOAD_HASH_UNDETECTED",
+    "expected_decision": "INVALID_HASH_MISMATCH",
+    "detectable_by": "recompute payload hash at verification time",
+    "description": "Verification of tampered credential CRD-2026-006095 returned VALID; the altered payload was not detected."
+  }
+]

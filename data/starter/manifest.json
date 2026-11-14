@@ -1,0 +1,162 @@
+{
+  "generator": "vericred-generator",
+  "seed": 20261022,
+  "scale": 0.05,
+  "as_of": "2026-10-22T00:00:00.000Z",
+  "generated_with": "node v22.23.2",
+  "command": "npm run generate -- --seed 20261022 --scale 0.05",
+  "provenance": "Fully synthetic. No external dataset was downloaded, scraped or redistributed; no real personal data is present. Name and institution pools are invented (see src/generator/reference.ts).",
+  "targets": {
+    "learners": 1000,
+    "courses": 50,
+    "credentials": 500,
+    "verifications": 250
+  },
+  "files": [
+    {
+      "file": "csv/audit_events.csv",
+      "rows": 2024,
+      "sha256": "2c2c678d1364721464e2807e541452e9d38f5d9d94f0e879701f6b45adf84875"
+    },
+    {
+      "file": "csv/completion_records.csv",
+      "rows": 2129,
+      "sha256": "ebdfa4e0f79f4f4df228c83b051bf6d945f076abb34b81dfaaa464f37f7fce1d"
+    },
+    {
+      "file": "csv/courses.csv",
+      "rows": 50,
+      "sha256": "f73f4e3858a8aef72e0e2ecf3a255a3c6b7df9c4921d78192b11c605058345c2"
+    },
+    {
+      "file": "csv/credential_rules.csv",
+      "rows": 76,
+      "sha256": "a2499399e503b5a02cf58a7db7e6dc317c17ce34d07ca63f2bc87828826206a7"
+    },
+    {
+      "file": "csv/credentials.csv",
+      "rows": 501,
+      "sha256": "464712e28f48a8c686a8e6603c77eca9114f42edae8a1992a52d472508523531"
+    },
+    {
+      "file": "csv/issuers.csv",
+      "rows": 6,
+      "sha256": "1ffa7eaa23d92fb912276824e6b40bc51a4e6f651e42c0637fe4cd47cd86e13e"
+    },
+    {
+      "file": "csv/learners.csv",
+      "rows": 1000,
+      "sha256": "3920f66e149aa05d7c6b8735614e22226a05c0cb7014b096c1eb44304bbfe432"
+    },
+    {
+      "file": "csv/revocations.csv",
+      "rows": 48,
+      "sha256": "d407f0ad2d171242bc4118d557d22c586a0b9ffc0c080cbc52a60237c30a6847"
+    },
+    {
+      "file": "csv/verification_requests.csv",
+      "rows": 251,
+      "sha256": "2cf455c1cc3c25871346cd9f0cf85782a5995cb5adb92b79ef99b4735b288125"
+    },
+    {
+      "file": "ground_truth.csv",
+      "rows": 6,
+      "sha256": "06b8300980f9a49ea413b51fcc3ff681c43ff2f340891aaa88dac7f10b5d4c2f"
+    },
+    {
+      "file": "ground_truth.json",
+      "rows": 6,
+      "sha256": "4bb2b418329abe4010ac5a8bcb0e6ced81a095aa398c7ed0c8fc9162f67c82bc"
+    },
+    {
+      "file": "json/audit_events.jsonl",
+      "rows": 2024,
+      "sha256": "b85453dca37aad4a943942856bd1b58b92fb40a5540b436622a24a126ddedfe0"
+    },
+    {
+      "file": "json/completion_records.jsonl",
+      "rows": 2129,
+      "sha256": "b84efad331c4d01f8d8d4e30d9b5ba524dab8035de778d820c9eae468da2926f"
+    },
+    {
+      "file": "json/courses.jsonl",
+      "rows": 50,
+      "sha256": "bca10863b4bf32d54844568ddad85cc00fd7e53fdca9de20e3f90499190f87ce"
+    },
+    {
+      "file": "json/credential_rules.jsonl",
+      "rows": 76,
+      "sha256": "5904ee9f6ed606c6d413f1a347c8903c820c0fe8bd2427c4a500e1bc23960102"
+    },
+    {
+      "file": "json/credentials.jsonl",
+      "rows": 501,
+      "sha256": "2bd36c8b26567819e07035ad4f39721036b1e8cdf57a7ea185df61b6e4319315"
+    },
+    {
+      "file": "json/issuers.jsonl",
+      "rows": 6,
+      "sha256": "502fe6be7d1a62260b0399e9f839a0683f9ecac7b6507c9cd069e75d241bcad8"
+    },
+    {
+      "file": "json/learners.jsonl",
+      "rows": 1000,
+      "sha256": "7f6349b19fc3f295eeb5d922f2c06a94d0114878d75da9ad2cf18b8d388af820"
+    },
+    {
+      "file": "json/revocations.jsonl",
+      "rows": 48,
+      "sha256": "55237f23d459fa99c822e45f2c2511a7319575f4bad16981d1a1f33cb9e693e4"
+    },
+    {
+      "file": "json/verification_requests.jsonl",
+      "rows": 251,
+      "sha256": "08fa3ac2eb1fb168abcaa2aca3543dba71683135f23fa3c7f28901d95298fd77"
+    },
+    {
+      "file": "sql/audit_events.sql",
+      "rows": 2024,
+      "sha256": "f26234d1e4664614d2b08a9d057340260e16fe11d302cb4f7c5cb8fb68df5919"
+    },
+    {
+      "file": "sql/completion_records.sql",
+      "rows": 2129,
+      "sha256": "303e49bda9f3c9ba742593e5f98f78a6b257c0ced32c102426067ccef7e4ec21"
+    },
+    {
+      "file": "sql/courses.sql",
+      "rows": 50,
+      "sha256": "51632988087daf6c54e64984458a0a237dbc4fce7c8674b5f6ee55cff887527e"
+    },
+    {
+      "file": "sql/credential_rules.sql",
+      "rows": 76,
+      "sha256": "5c39bb570b5d84f772b12eec41c542562f353078e108212e819cccc8d3219258"
+    },
+    {
+      "file": "sql/credentials.sql",
+      "rows": 501,
+      "sha256": "31bd818ba6ee862b04e81c4a92148a24d84eedd96e0f75a65509499653025792"
+    },
+    {
+      "file": "sql/issuers.sql",
+      "rows": 6,
+      "sha256": "7755869a39dc970e7dabb98dbeff575f7bb49e08b16651cf99c52f2a20e10fb0"
+    },
+    {
+      "file": "sql/learners.sql",
+      "rows": 1000,
+      "sha256": "a56ae24f1a43c0083fc34cd01eefefe6d305f3b8e78cc5cccc95cad112b58c09"
+    },
+    {
+      "file": "sql/revocations.sql",
+      "rows": 48,
+      "sha256": "7b529f0dbad23b8e79c9081b260db00a6ee960db7b51c199f767c69e1c76747f"
+    },
+    {
+      "file": "sql/verification_requests.sql",
+      "rows": 251,
+      "sha256": "59fb561fa0f6534950427862602edbac4aeca4221c8776a01b5bcb8b8a299cb4"
+    }
+  ]
+}
