@@ -21,7 +21,7 @@ services:
     # The build also seeds the database: generate the dataset, push the schema, load it. All three
     # need devDependencies (tsc, prisma), which exist during build but may be pruned afterwards,
     # so they run here rather than at start-up.
-    buildCommand: npm install && npm run build && npm run deploy:setup
+    buildCommand: npm install --include=dev && npm run build && npm run deploy:setup
     startCommand: npm start
     healthCheckPath: /api/health
     envVars:
