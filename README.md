@@ -25,6 +25,9 @@ The same rule engine (`server/src/engine/rules.ts`) produces the dataset's outco
 
 ---
 
+<img width="1847" height="905" alt="image" src="https://github.com/user-attachments/assets/432958d5-ea95-4341-b080-57ffe54252db" />
+
+
 ## Quick start
 
 You need **Node.js 20+**. You do **not** need a database.
